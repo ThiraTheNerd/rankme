@@ -1,0 +1,10 @@
+{% extends 'base.html' %}{% load bootstrap3 %}
+{% load static %}
+{% block content %}
+<div class="container">
+  <h2 class="text-center">{{project.name}}</h2>
+  <img src="{{project.project_image.url}}" id="project-image">
+  
+</div>
+
+{% endblock %}

@@ -1,0 +1,1 @@
+web: gunicorn rankme.wsgi

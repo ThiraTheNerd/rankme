@@ -1,0 +1,25 @@
+#reg-form {
+  margin: 250px;
+  color: white;
+  margin-bottom: 0%;
+  text-align: left;
+}
+#form {
+  margin: 60px;
+  margin-left: 100px;
+  margin-right: 100px;
+  text-align: left;
+  margin-bottom: 0%;
+  color: white;
+}
+body {
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+.btn {
+  background-color: #da0037;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}

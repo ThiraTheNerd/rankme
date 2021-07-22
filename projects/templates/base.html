@@ -1,0 +1,35 @@
+{% load bootstrap3 %}
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% if title %}
+  <title>RankMe - {{title}}</title>
+  {% else %}
+    <title> RankMe </title>
+  {% endif %}
+
+  {% block styles %}
+    {% bootstrap_css %}
+    <link href="{% static 'fontawesome_free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <!-- Our project just needs Font Awesome Free's Solid + Brand files -->
+    <link href="{% static 'fontawesome_free/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesome_free/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesome_free/css/solid.css' %}" rel="stylesheet" type="text/css">
+  {% endblock %}
+</head>
+<body>
+  {% block content %}
+
+    {% block scripts %}
+      <script src="{% static 'fontawesome_free/js/all.min.js' %}"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      {% bootstrap_javascript %}
+    {% endblock %}
+  {% endblock %}
+</body>
+</html>
