@@ -23,7 +23,6 @@ from django.shortcuts import redirect, render
 def index(request):
     try:
         projects = Project.objects.all()
-        projects = projects[::-1]
         print(projects)
     except ObjectDoesNotExist:
         projects = None
