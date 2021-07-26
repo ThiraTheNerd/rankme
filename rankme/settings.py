@@ -1,28 +1,33 @@
 # type:ignore
 from pathlib import Path
 import os
-# from decouple import config, Csv
+from decouple import config, Csv
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 import sys
+import django_heroku
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# cloudinary.config(
-#     cloud_name='benjail',
-#     api_key=226771718119947,
-#     api_secret='xXeHld6lfEzhMwOgkgIOY3qrqII'
-# )
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
-SECRET_KEY = '39(u+j9r4vi3m8k89(#r3@^*x0noqmi2b)fw#51^*1(!(pnu5p'
+cloudinary.config(
+    cloud_name = config('CLOUD_NAME'), 
+    api_key = config('API_KEY'),
+    api_secret = config('API_SECRET')
+)
+# SECURITY WARNING: keep the secret key used in production secret!
+MODE=config("MODE", default="dev")
+SECRET_KEY = config('SECRET_KEY')
+sys.modules["fontawesome_free"] = __import__("fontawesome-free")
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = config('DEBUG', default=False, cast=bool)
+
 
 sys.modules["fontawesome_free"] = __import__("fontawesome-free")
 # Application definition
-DEBUG = True
-ALLOWED_HOSTS = ['*']
+
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -38,6 +43,7 @@ INSTALLED_APPS = [
     "url_or_relative_url_field",
     "rest_framework",
     "rest_framework.authtoken",
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -80,16 +86,34 @@ REST_FRAMEWORK = {
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 # development
-DATABASES = {
-'default': {
-    'ENGINE': 'django.db.backends.postgresql_psycopg2', 
-    'NAME': 'rated',
-    'HOST': 'localhost',
-    'PORT': '',                    
-    'USER': 'postgres',
-    'PASSWORD': 'benjail1000',
-    }
-}
+
+if config('MODE')=="dev":
+   DATABASES = {
+       'default': {
+           'ENGINE': 'django.db.backends.postgresql_psycopg2',
+           'NAME': config('DB_NAME'),
+           'USER': config('DB_USER'),
+           'PASSWORD': config('DB_PASSWORD'),
+           'HOST': config('DB_HOST'),
+           'PORT': '',
+       }
+       
+   }
+# production
+else:
+   DATABASES = {
+       'default': dj_database_url.config(
+           default=config('DATABASE_URL')
+       )
+   }
+
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
+
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+
+
+
 # production
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -141,3 +165,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+django_heroku.settings(locals())

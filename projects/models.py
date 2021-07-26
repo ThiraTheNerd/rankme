@@ -10,15 +10,13 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
     bio = HTMLField(max_length=100)
     profile_pic = CloudinaryField(
-        default="https://res.cloudinary.com/playboard/image/upload/v1626529829/vjytnast5wblft8xvy9p.jpg"
+        default="https://res.cloudinary.com/playboard/image/upload/v1626529829/vjytnast5wblft8xvy9p.jpg",
     )
-    website_url = URLOrRelativeURLField()
+    full_name = models.CharField(blank=True, max_length=120)
+    location = models.CharField(blank=True, max_length=120)
 
     def __str__(self):
-        return self.bio
-
-    def save_profile(self):
-        self.save
+        return self.user
 
 
 class Project(models.Model):
@@ -28,8 +26,7 @@ class Project(models.Model):
     project_image = CloudinaryField(
         default="https://res.cloudinary.com/playboard/image/upload/v1626529829/vjytnast5wblft8xvy9p.jpg"
     )
-    url = URLOrRelativeURLField(null=True)
-    github_url = URLOrRelativeURLField(null=True)
+    site_url = URLOrRelativeURLField(null=True)
     post_date = models.DateTimeField(auto_now_add=True, null=True, blank=True)
 
     def __str__(self):
@@ -41,6 +38,9 @@ class Project(models.Model):
     def update(self):
         self.save()
 
+    def delete(self):
+        self.delete()
+
     @classmethod
     def search_by_name(cls, search_term):
         projects = cls.objects.filter(title=search_term)
@@ -51,8 +51,9 @@ class Project(models.Model):
         projects = Project.objects.filter(profile__pk=profile)
         return projects
 
-    def delete(self):
-        pass
+    @classmethod
+    def all_posts(cls):
+        return cls.objects.all()
 
 
 rating = (
@@ -77,7 +78,7 @@ class Rate(models.Model):
     design_avg = models.FloatField(null=True, blank=True, default=0)
     usability_avg = models.FloatField(null=True, blank=True, default=0)
     total_score = models.FloatField(null=True, default=0)
-    project = models.ForeignKey(Project, on_delete=CASCADE)
+    project = models.ForeignKey(Project, on_delete=CASCADE, related_name='ratings', null=True)
     user = models.ForeignKey(User, on_delete=CASCADE)
 
     def __str__(self):
@@ -87,6 +88,6 @@ class Rate(models.Model):
         self.save()
 
     @classmethod
-    def total_score(cls, id):
-        ratings = cls.objects.filter(id=id).all()
+    def project_rating(cls, id):
+        ratings = cls.objects.filter(project_id=id).all()
         return ratings

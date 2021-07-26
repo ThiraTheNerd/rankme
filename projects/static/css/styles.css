@@ -1,6 +1,43 @@
 body {
   overflow-x: hidden;
 }
+/*--------------------------------------------------------------
+# Navigation Menu
+--------------------------------------------------------------*/
+/* Desktop Navigation */
+#header {
+  margin-left: 500px;
+  margin-bottom: 5px;
+}
+.nav-menu ul {
+  margin: 20;
+  padding: 0;
+  list-style: none;
+  margin-left: 450px;
+}
+.nav-menu ul {
+  display: flex;
+  margin-top: 20px;
+}
+.nav-menu > ul > li {
+  position: relative;
+  white-space: nowrap;
+  padding: 30px;
+}
+.nav-menu a {
+  display: block;
+  position: relative;
+  color: #556270;
+  transition: 0.3s;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+}
+.nav-menu a:hover,
+.nav-menu .active > a,
+.nav-menu li:hover > a {
+  color: #d9232d;
+}
 #hero {
   width: 100%;
   height: 70vh;
@@ -139,8 +176,8 @@ body {
   transition: 0.5s;
   line-height: 1;
   color: #fff;
-  -webkit-animation-delay: 0.8s;
-  animation-delay: 0.8s;
+  /* -webkit-animation-delay: 0.8s;
+  animation-delay: 0.8s; */
   background: #d9232d;
 }
 
@@ -161,14 +198,6 @@ body {
     font-size: 28px;
   }
 }
-
-@media (min-width: 1024px) {
-  #hero .carousel-control-prev,
-  #hero .carousel-control-next {
-    width: 5%;
-  }
-}
-
 @media (max-height: 500px) {
   #hero {
     height: 120vh;

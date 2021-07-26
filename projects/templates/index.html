@@ -2,22 +2,20 @@
 {% load static %}
 {% block content%}
 <section id="hero">
-  <div class="heroCarousel" class="carousel slide carousel-fade" data-ride="carousel">
-    <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
-    <div class="carousel-inner" role="listbox">
       <!-- Slide 1 -->
-      <div class="carousel-item active" style="background-image: url(../static/photos/slide/slide-1.jpg)">
-        <div class="carousel-container">
-          <div class="container">
-            <h2 class="animate__animated animate__fadeInDown">Benchmark with other <span>developers</span></h2>
-            <p class="animate__animated animate__fadeInUp">Review work done by other developers and have them rate your work too.</p>
-            <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Get Started</a>
-          </div>
-        </div>
+  <div class="" style="background-image: url(../static/photos/slide/slide-1.jpg)">
+    <div class="carousel-container">
+      <div class="container">
+        <h2 class="animate__animated animate__fadeInDown">Benchmark with other <span>developers</span></h2>
+        <p class="animate__animated animate__fadeInUp">Review work done by other developers and have them rate your work too.</p>
+        <a data-toggle="modal" data-target="#myModal" class="btn btn-lg btn-get-started ">Post Project</a>
       </div>
     </div>
   </div>
+    </div>
+  </div>
 </section>
+{% include "navbar.html" %}
 <div>
 <div class="flex-box">
   <h2>Top Rated </h2>

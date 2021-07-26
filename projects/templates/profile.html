@@ -1,0 +1,52 @@
+{% extends 'django_registration/base_form.html' %}
+{% load bootstrap3 %}
+{% load static %}
+{% block content %}
+
+<div class="profile-header">
+  <img src="{% static 'photos/head3.jpg' %}" id="header-image">
+  <img src="{% static 'photos/maleprofile.jpg' %}" id="profile-pic">
+  <div class="profile-details">
+    <h1>{{profile.full_name}}</h1>
+    {% if profile.bio %}
+    <p>{{profile.bio}}</p>
+    {% else %}
+    <span> {{profile.user.username}} has no bio </span>
+    {% endif %}
+
+  </div>
+  {% if profile.user == currentuser %}
+  <button type="button" class="btn btn-danger" id="editbtn"data-toggle="modal" data-target="#myModal">
+    Edit</button>
+  {% endif %}
+</div>
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content p-4">
+      <h3 class="text-center">Update Profile</h3>
+      <form method="POST" enctype="multipart/form-data" action="{% url 'profile' profile.user.username %}">
+      {% csrf_token %}
+      {{ user_form }}
+      <br>
+      {{ profile_form.as_p}}
+      <div class="text-center">
+        <button type="submit" class="btn btn-lg btn-success">Save changes</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4" id="contacts">
+    <div class="contact-info">
+      <a><img src="{% static 'photos/call.png' %}"> {{profile.phone_number}}</a>
+      <a><img src="{% static 'photos/gmail.png' %}"> {{profile.email}}</a>
+    </div>
+    <button type="button" class="btn btn-lg btn-default" id="chat-btn">Chat</button>
+  </div>
+  <div class="col-md-8">
+    
+  </div>
+</div>
+
+{% endblock %}
