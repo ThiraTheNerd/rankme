@@ -2,7 +2,17 @@
 {% load static %}
 {% block content%}
 {% include "navbar.html" %}
-
+<section id="hero">
+  <div class="carousel-item active" style="background-image: url(photos/slide/slide-1.jpg)">
+    <div class="carousel-container">
+      <div class="container">
+        <h2 class="animate__animated animate__fadeInDown">Benchmark with other <span>Developers</span></h2>
+        <p class="animate__animated animate__fadeInUp">Review your projects and have other developers review your work.</p>
+        <a href="{% url 'create_project' %}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Post Project</a>
+      </div>
+    </div>
+  </div>
+</section>
 <div class="flex-box">
   <h2>Top Rated </h2>
 </div>
@@ -13,7 +23,7 @@
         <img src="{% static 'photos/slide/slide-1.jpg' %}" alt="Avatar" style="width:300px;height:300px;">
       </div>
       <div class="flip-card-back">
-        <h1>John Doe</h1> 
+        <h1></h1> 
         <p>Architect & Engineer</p> 
         <p>We love that guy</p>
       </div>
@@ -37,95 +47,13 @@
             <p>{{project.profile.username}}</p>
             <div class="portfolio-links">
               <a href="{% url 'post_item' project.id %}"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
-              <a href=""class="venobox" title="Portfolio Details"><i class="fa fa-link" aria-hidden="true"></i></a>
+              <a href="{{project.site_url}}"target="_blank"class="venobox" title="Portfolio Details"><i class="fa fa-link" aria-hidden="true"></i></a>
             </div>
           </div>
         </div>
       </div>
 
       {% endfor %}
-      <!-- <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-        <div class="portfolio-wrap">
-          <img src="{% static 'photos/portfolio/portfolio-2.jpg'%}" class="img-fluid" alt="">
-          <div class="portfolio-info">
-            <h4>Web 2</h4>
-            <p>Web</p>
-            <div class="portfolio-links">
-              <a href="assets/img/portfolio/portfolio-1.jpg" data-gall="portfolioGallery" class="venobox" title="App 1"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
-              <a href="portfolio-details.html" data-gall="portfolioDetailsGallery" data-vbtype="iframe" class="venobox" title="Portfolio Details"><i class="fa fa-link" aria-hidden="true"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-        <div class="portfolio-wrap">
-          <img src="{% static 'photos/portfolio/portfolio-4.jpg'%}" class="img-fluid" alt="">
-          <div class="portfolio-info">
-            <h4>Card 2</h4>
-            <p>Card</p>
-            <div class="portfolio-links">
-              <a href="assets/img/portfolio/portfolio-4.jpg" data-gall="portfolioGallery" class="venobox" title="Card 2"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" data-gall="portfolioDetailsGallery" data-vbtype="iframe" class="venobox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-        <div class="portfolio-wrap">
-          <img src="{% static 'photos/portfolio/portfolio-6.jpg'%}" class="img-fluid" alt="">
-          <div class="portfolio-info">
-            <h4>App 3</h4>
-            <p>App</p>
-            <div class="portfolio-links">
-              <a href="assets/img/portfolio/portfolio-6.jpg" data-gall="portfolioGallery" class="venobox" title="App 3"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" data-gall="portfolioDetailsGallery" data-vbtype="iframe" class="venobox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-        <div class="portfolio-wrap">
-          <img src="{% static 'photos/portfolio/portfolio-7.jpg'%}" class="img-fluid" alt="">
-          <div class="portfolio-info">
-            <h4>Card 1</h4>
-            <p>Card</p>
-            <div class="portfolio-links">
-              <a href="assets/img/portfolio/portfolio-7.jpg" data-gall="portfolioGallery" class="venobox" title="Card 1"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" data-gall="portfolioDetailsGallery" data-vbtype="iframe" class="venobox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-        <div class="portfolio-wrap">
-          <img src="{% static 'photos/portfolio/portfolio-8.jpg'%}" class="img-fluid" alt="">
-          <div class="portfolio-info">
-            <h4>Card 3</h4>
-            <p>Card</p>
-            <div class="portfolio-links">
-              <a href="assets/img/portfolio/portfolio-8.jpg" data-gall="portfolioGallery" class="venobox" title="Card 3"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" data-gall="portfolioDetailsGallery" data-vbtype="iframe" class="venobox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-        <div class="portfolio-wrap">
-          <img src="{% static 'photos/portfolio/portfolio-9.jpg'%}" class="img-fluid" alt="">
-          <div class="portfolio-info">
-            <h4>Web 3</h4>
-            <p>Web</p>
-            <div class="portfolio-links">
-              <a href="assets/img/portfolio/portfolio-9.jpg" data-gall="portfolioGallery" class="venobox" title="Web 3"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" data-gall="portfolioDetailsGallery" data-vbtype="iframe" class="venobox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-        </div>
-      </div> -->
-
     </div>
   </div>
 </section>

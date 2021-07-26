@@ -76,7 +76,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "rankme.wsgi.application"
-
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # .....
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (

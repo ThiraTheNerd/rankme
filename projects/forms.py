@@ -11,4 +11,4 @@ class RatingForm(forms.ModelForm):
 class PostProjectForm(forms.ModelForm):
   class Meta:
     model = Project
-    fields = ["name", "details", "project_image", "site_url"]
+    exclude = ["profile", "post_date"]

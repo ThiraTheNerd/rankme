@@ -7,6 +7,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('newproject', views.create_project, name = "create_project"),
     path('profile/<username>', views.profile, name='profile'),
     path("post/<int:id>", views.view_project, name="post_item"),
     path("project/<int:id>", views.view_project, name="view_project"),

@@ -13,8 +13,9 @@ from django.contrib.auth.decorators import login_required
 from .forms import RatingForm, PostProjectForm
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
+
 # ........
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
 # Create your views here.
 
@@ -40,19 +41,18 @@ def index(request):
     ctx = {
         "projects": projects,
         "project_form": form,
+       
     }
     return render(request, "index.html", ctx)
 
 
 def profile(request, username):
-    user = User.objects.get(username = username)
+    user = User.objects.get(username=username)
     try:
-        user_profile = Profile.objects.get(user = user.id)
+        user_profile = Profile.objects.get(user=user.id)
     except ObjectDoesNotExist:
         return Http404
-    ctx = {
-        "user_profile" :user_profile
-    }
+    ctx = {"user_profile": user_profile}
     return render(request, "profile.html", ctx)
 
 
@@ -109,7 +109,21 @@ def view_project(request, id):
 
 
 def create_project(request):
-    pass
+    if request.method == "POST":
+        form = PostProjectForm(request.POST)
+        if form.is_valid():
+            project = form.save(commit=False)
+            project.profile = request.user
+            project.save()
+            return redirect('index')
+    else:
+        form = PostProjectForm()
+    ctx ={
+        "form": form
+    }
+
+    return render(request, "project/new_project.html", ctx)
+
 
 
 def update_project(request):
