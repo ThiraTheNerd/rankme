@@ -1,7 +1,6 @@
 {% extends 'django_registration/base_form.html' %} {% load bootstrap3%}
 {% block content %}
 {{block.super}}
-
 <div class="container">
   <form action="/accounts/login/" method="POST" id="reg-form">
     {% csrf_token %}
