@@ -9,7 +9,7 @@ username : u57464
 password :admin2020
 ## Screenshots 
 ###### Home page
-
+<img src= "https://user-images.githubusercontent.com/51013354/127123660-0aa29934-aed4-4452-893a-56b3eb1304c5.png" >
 
 ## User Story  
   
