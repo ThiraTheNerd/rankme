@@ -5,8 +5,8 @@ A django application that can help me track the quality of your projects by havi
 To view the site, click [here](https://rankme254.herokuapp.com/)
 
 ## Admin Dashboard credentials
-username : u45142
-password :admin2020
+username : u57464
+password :admin2021
 ## Screenshots 
 ###### Home page
 
