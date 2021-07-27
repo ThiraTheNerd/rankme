@@ -2,7 +2,6 @@
 {% load bootstrap3 %}
 {% load static %}
 {% block content %}
-
 <div class="profile-header">
   <img src="{% static 'photos/head3.jpg' %}" id="header-image">
   <img src="{% static 'photos/maleprofile.jpg' %}" id="profile-pic">
@@ -13,7 +12,6 @@
     {% else %}
     <span> {{profile.user.username}} has no bio </span>
     {% endif %}
-
   </div>
   {% if profile.user == currentuser %}
   <button type="button" class="btn btn-danger" id="editbtn"data-toggle="modal" data-target="#myModal">
@@ -45,8 +43,6 @@
     <button type="button" class="btn btn-lg btn-default" id="chat-btn">Chat</button>
   </div>
   <div class="col-md-8">
-    
   </div>
 </div>
-
 {% endblock %}
