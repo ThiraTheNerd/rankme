@@ -27,9 +27,6 @@ def index(request):
         print(projects)
     except ObjectDoesNotExist:
         projects = None
-    
-    
-    sorted(zip(score, name), reverse=True)[:3]
 
     if request.method == "POST":
         form = PostProjectForm(request.POST)
