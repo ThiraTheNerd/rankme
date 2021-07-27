@@ -23,7 +23,7 @@ class Project(models.Model):
     name = models.CharField(max_length=50)
     details = HTMLField()
     profile = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
-    project_image = CloudinaryField()
+    project_image = CloudinaryField('image')
     site_url = URLOrRelativeURLField(null=True)
     post_date = models.DateTimeField(auto_now_add=True, null=True, blank=True)
 
