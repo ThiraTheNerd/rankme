@@ -18,6 +18,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
 
 # Create your views here.
+sorted(zip(score, name), reverse=True)[:3]
 
 
 def index(request):
@@ -26,6 +27,9 @@ def index(request):
         print(projects)
     except ObjectDoesNotExist:
         projects = None
+    
+    
+    sorted(zip(score, name), reverse=True)[:3]
 
     if request.method == "POST":
         form = PostProjectForm(request.POST)
@@ -54,8 +58,6 @@ def profile(request, username):
     ctx = {"user_profile": user_profile}
     return render(request, "profile.html", ctx)
 
-
-@login_required(login_url="/accounts/login/")
 def view_project(request, id):
     try:
         project = Project.objects.get(pk=id)
@@ -106,7 +108,7 @@ def view_project(request, id):
 
     return render(request, "project/project.html", ctx)
 
-
+@login_required(login_url="/accounts/login/")
 def create_project(request):
     if request.method == "POST":
         form = PostProjectForm(request.POST)
