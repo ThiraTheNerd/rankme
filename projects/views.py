@@ -18,8 +18,6 @@ from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
 
 # Create your views here.
-sorted(zip(score, name), reverse=True)[:3]
-
 
 def index(request):
     try:
