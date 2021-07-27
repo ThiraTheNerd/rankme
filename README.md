@@ -6,7 +6,7 @@ To view the site, click [here](https://rankme254.herokuapp.com/)
 
 ## Admin Dashboard credentials
 username : u57464
-password :admin2021
+password :admin2020
 ## Screenshots 
 ###### Home page
 
