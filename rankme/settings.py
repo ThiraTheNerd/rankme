@@ -24,8 +24,6 @@ sys.modules["fontawesome_free"] = __import__("fontawesome-free")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-
-sys.modules["fontawesome_free"] = __import__("fontawesome-free")
 # Application definition
 
 INSTALLED_APPS = [
