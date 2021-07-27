@@ -1,5 +1,5 @@
 # rankme
-A django application that can help me track the quality of your projects by having other developers rank your posted projects. The projects are rated based on their usability, content and Design
+A django application that can help you track the quality of your projects by having other developers rank your posted projects. The projects are rated based on their usability, content and Design
 
 ##  Live Link 
 To view the site, click [here](https://rankme254.herokuapp.com/)
