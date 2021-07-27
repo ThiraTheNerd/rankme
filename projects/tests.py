@@ -1,6 +1,5 @@
 from django.test import TestCase
 from .models import Project, Profile, User
-import datetime as dt
 
 # Create your tests here.
 
@@ -36,17 +35,6 @@ class ProfileTest(TestCase):
         self.profile = Profile.objects.create(
             user=self.user, bio="I am manny", phone_number=9999907
         )
+
     def test_isinstance(self):
         self.assertTrue(isinstance(self.user, Profile))
-
-    def test_save_method(self):
-        """
-        test profile  save
-        """
-        self.nature.save_profile()
-        comm = Profile.objects.all()
-        self.assertTrue(len(comm) > 0)
-
-    def tearDown(self):
-        Profile.objects.all().delete()
-        User.objects.all().delete()
